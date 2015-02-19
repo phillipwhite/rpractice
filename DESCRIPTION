@@ -1,0 +1,10 @@
+Package: rpractice
+Type: Package
+Title: keeps my answers to r-exercises.pdf
+Version: 0.1
+Date: 2015-02-13
+Author: The fastest gunman of the west
+Maintainer: The fastest gunman of the west <quickie@west>
+Description: It seriously considers solving the interesting problems in r-exercises.pdf
+License: Totally public domain
+Suggests: testthat
