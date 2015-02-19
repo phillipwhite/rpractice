@@ -1,5 +1,5 @@
 # 3(b) 
-s <- 2^(1:25)/(1:25)
+s = 2^(1:25)/(1:25)
 test_that("vector indexing works as I think", {
   expect_equal(s[21], (2^21)/21)
 })
@@ -42,3 +42,54 @@ test_that("I'm looping right", {
 # otherwise it won't match the number of items in the
 # sequence x(i+1)
 r = sum(exp(-x[-1]) / (x[-length(x)] + 10))
+
+# 7(d)
+r = sqrt(abs(x - mean(x)))
+# in this case, the test below doesn't have a connection
+# with the r-expression computed. if we change the
+# computation, we'll have to adjust the test.
+# i don't have any better idea. but this test at 
+# least makes sure that what I expect from the 
+# expression is what I get. 
+test_that("my understanding here is okay", {
+  expect_identical(sqrt(abs(x[1] - mean(x[1]))), 0)
+})
+
+# 7(e) how many values in y are within 200 of max(y)?
+# solution. to be within 200 of max(y) means what?
+# it means that |x - max(y)| < 200 is true.
+bs = y[abs(y - max(y)) < 200]
+
+# the book solution is very different. they do:
+book_res = sum(y > max(y) - 200)
+
+test_that("my solution matches the book's", {
+  expect_identical(length(bs), book_res)
+})
+
+# 7(f)
+# x[x %% 2 == 0]
+# again, book style is different
+test_that("my solution matches book's", {
+  expect_identical(length(x[x %% 2 == 0]), 
+                   sum(x %% 2 == 0))
+})
+
+# 7(g) sort the numbers in x in the order of 
+# increasing values in y. what does that even mean?
+# i don't get how order() works.
+
+# 7(h)
+r = y[seq(1,length(y), by=3)]
+# book solution is wild. y[c(T,F,F)]. how does it work?
+test_that("book solution works", {
+  expect_identical(r, y[c(T,F,F)])
+})
+
+# 8. 
+# apparently we must use cumprod to compute each 
+# of the inner sequences first.
+num = seq(2,38, by=2)
+den = seq(3,39, by=2)
+r = 1 + sum(cumprod(num/den))
+
