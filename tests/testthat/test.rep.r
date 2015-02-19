@@ -1,3 +1,4 @@
+#exercise 1 
 s <- rep(c(4,6,3),times=10)
 test_that("the list has 30 items", {
   expect_equal(length(s), 30)

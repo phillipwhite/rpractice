@@ -1,3 +1,5 @@
+# exercise 2 
+
 s <- seq(3, 6, by=0.1)
 ecos <- function (x) { exp(x)*cos(x) }
 t <- ecos(s)
